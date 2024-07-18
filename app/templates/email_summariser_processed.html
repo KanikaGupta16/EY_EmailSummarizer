@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Processor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+        .sidebar {
+            background-color: #333;
+            color: white;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            height: 100%;
+        }
+        .sidebar img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            max-width: 100px;
+            height: auto;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .container form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .container input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .container button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .output textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            resize: vertical;
+        }
+        .output a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .output a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="{{ url_for('static',  filename='images/ey-logo-black.png') }}" alt="Company Logo">
+        <a href="/profile">Profile</a>
+        <a href="#">Settings</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Welcome, {{ user_name }}</h1>
+            <img src="{{ url_for('static',  filename='images/ey-logo-black.png') }}" alt="Company Logo">
+        </div>
+        
+
+        {% if output %}
+        <div class="output show">
+            <h2>Processed Text</h2>
+            <textarea readonly>{{ output_text }}</textarea>
+            
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

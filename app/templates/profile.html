@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+        .sidebar {
+            background-color: #333;
+            color: white;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            height: 100%;
+        }
+        .sidebar img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            max-width: 100px;
+            height: auto;
+        }
+        .feature {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .feature img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="{{ url_for('static',  filename='images/ey-logo-black.png') }}" alt="Company Logo">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Welcome, {{user_name}}</h1>
+            <img src="{{ url_for('static',  filename='images/ey-logo-black.png') }}" alt="Company Logo">
+        </div>
+        <a href="/email_summariser" class="feature">
+            <img src="{{ url_for('static', filename='images/email_icon.png') }}" alt="Email Summariser Logo">
+            <div>
+                <h2>Email Summariser</h2>
+                <p>This feature allows you to summarise your emails quickly and efficiently.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
